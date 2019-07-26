@@ -1,0 +1,66 @@
+<!--    * -->
+<!--   *** -->
+<!--  ***** -->
+<!-- ******* -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>輸入聖誕樹的高度，然後用*組合出來</title>
+</head>
+
+<body>
+    <div>
+        <label for="">請輸入聖誕樹的高度：</label>
+        <input type="text" id="inputNum">
+        <label for="">請輸入聖誕樹的層：</label>
+        <input type="text" id="inputFloor">
+        <button onclick="show()">開始</button>
+        <p id="treeHight"></p>
+    </div>
+
+    <script>
+        function show() {
+            var num = document.getElementById('inputNum').value;
+            var floor = document.getElementById('inputFloor').value;
+            var tree = '';
+            for (var k = 1; k <= floor; k++) {
+                for (var i = 1; i < num * 2; i += 2) {
+                    for (var j = 0; j <= num - i / 2; j++) {
+                        tree = tree + '　';
+                    }
+                    for (var j = 1; j <= i; j++) {
+                        tree = tree + '＊';
+                    }
+                    tree = tree + '<br>'
+                }
+            }
+            for (var i = 0; i < num / 2; i++) {
+                for (j = 0; j < num - 1; j++) {
+                    tree = tree + '　';
+                }
+                for (var j = 0; j < 3; j++) {
+                    tree = tree + '＊';
+                }
+                tree = tree + '<br>'
+            }
+
+            document.getElementById('treeHight').innerHTML = tree;
+        }
+
+        // ※ 注意要用全形的＊和全形的空白 ※
+
+        // 分解動作
+        // 1. 觀察列和星星數量的變化: 星星數量 = 最終列 + 最終列 - 1
+        //    1＝>1、2=>3、3=>5、4=>7、5=>9
+        // 2. 觀察列和空白數量的變化: 假設以四列舉例
+        //    第一列：1=>3、5=>7
+        //    第二列：1=>2、6=>7
+        //    第三列：1=>1、7=>7
+        //    第四列：
+        // 3. 觀察星星中間位置: 中間位置 = 最終列
+    </script>
+</body>
+
+</html>
